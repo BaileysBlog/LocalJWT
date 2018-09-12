@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.2019
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleJWT", "SimpleJWT\SimpleJWT.csproj", "{D90B9641-AB11-4372-A8F8-446A7CE51623}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatelessFileAccessPermission", "StatelessFileAccessPermission\StatelessFileAccessPermission.csproj", "{2C483889-B7DE-4125-8A13-D6B11ADEE8A7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{D90B9641-AB11-4372-A8F8-446A7CE51623}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D90B9641-AB11-4372-A8F8-446A7CE51623}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D90B9641-AB11-4372-A8F8-446A7CE51623}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C483889-B7DE-4125-8A13-D6B11ADEE8A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C483889-B7DE-4125-8A13-D6B11ADEE8A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C483889-B7DE-4125-8A13-D6B11ADEE8A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C483889-B7DE-4125-8A13-D6B11ADEE8A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -8,6 +8,7 @@ using System.Security.Claims;
 using Microsoft.IdentityModel.Logging;
 using System.Diagnostics;
 using System.IO;
+using System.Collections.Generic;
 
 namespace SimpleJWT.Services
 {
@@ -20,6 +21,16 @@ namespace SimpleJWT.Services
         {
             _membershipProvider = new MembershipProvider();
             _rsaProvider = new RSAKeyProvider();
+        }
+
+        /// <summary>
+        /// Delete me I am only here for testing
+        /// </summary>
+        /// <param name="Name">The name of the Claim</param>
+        /// <param name="Value">The value of this Claim</param>
+        public void AddClaim(String Name, String Value)
+        {
+            _membershipProvider.Claims.Add(new Claim(Name, Value));
         }
 
         public async Task<string> GenerateJwtTokenAsync(string username, string password)
@@ -66,13 +77,22 @@ namespace SimpleJWT.Services
             }
         }
 
+        public IEnumerable<Claim> GetTokenClaims(String Token)
+        {
+            if (ValidateTokenAsync(Token).Result)
+            {
+                return new JwtSecurityToken(Token).Claims;
+            }
+            return null;
+        }
+
         public async Task<bool> ValidateTokenAsync(string TokenString)
         {
             Boolean result = false;
 
             try
             {
-                SecurityToken securityToken = new JwtSecurityToken(TokenString);
+                JwtSecurityToken securityToken = new JwtSecurityToken(TokenString);
                 JwtSecurityTokenHandler securityTokenHandler = new JwtSecurityTokenHandler();
                 RSACryptoServiceProvider publicAndPrivate = new RSACryptoServiceProvider(2048);
 
@@ -87,7 +107,7 @@ namespace SimpleJWT.Services
                     IssuerSigningKey = new RsaSecurityKey(publicAndPrivate)
                 };
 
-                ClaimsPrincipal claimsPrincipal = securityTokenHandler.ValidateToken(TokenString, validationParameters, out securityToken);
+                ClaimsPrincipal claimsPrincipal = securityTokenHandler.ValidateToken(TokenString, validationParameters, out SecurityToken _secToken);
 
                 result = true;
             }

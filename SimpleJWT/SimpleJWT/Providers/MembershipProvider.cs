@@ -8,11 +8,12 @@ namespace SimpleJWT.Providers
 {
     public class MembershipProvider
     {
+
+        public List<Claim> Claims = new List<Claim>();
+
+
         public List<Claim> GetUserClaims(string username)
         {
-            List<Claim> Claims = new List<Claim>();
-            Claims.Add(new Claim(ClaimTypes.Role, "Admin"));
-            Claims.Add(new Claim(ClaimTypes.Email, "baileymiller@live.com"));
             return Claims;
         }
 
